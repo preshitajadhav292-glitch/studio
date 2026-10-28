@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#"><span class="logo">✦</span> Project Studio</a>
+  <nav id="nav">
+    <a href="#" class="active">Workspace</a>
+    <a href="#">My Projects</a>
+    <a href="#">History</a>
+  </nav>
+  <div class="user">
+    <button class="icon-btn" aria-label="Settings">⚙</button>
+    <span class="avatar">PS</span>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow">AI-POWERED APP BUILDER</p>
+    <h1>From a spark of an idea<br><em>to something real.</em></h1>
+    <p class="sub">Describe what you want to build. Let AI research, refine, and structure your idea into a powerful prompt ready for application generation.</p>
+    <div class="eyes" aria-hidden="true">
+  <div class="eye"><span class="pupil"></span></div>
+  <div class="eye"><span class="pupil"></span></div>
+</div>
+  </section>
+
+  <section class="panel prompt">
+    <h2 class="panel-title"><span class="spark">✦</span> What do you want to build?</h2>
+    <div class="textwrap">
+      <textarea id="idea" maxlength="2000" placeholder="Describe the application you want to build..."></textarea>
+      <div class="textbar">
+        <button class="icon-btn" aria-label="Attach file">📎</button>
+        <span id="count">0/2000</span>
+        <button id="improve" class="cta">Improve My Prompt →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid2">
+    <article class="panel choice recommended" id="autoCard" tabindex="0">
+      <span class="badge">RECOMMENDED</span>
+      <div class="choice-head">
+        <div class="gem">✦</div>
+        <div>
+          <h3>Let AI choose for me</h3>
+          <p>Our platform selects the best AI model and research workflow for your idea.</p>
+        </div>
+      </div>
+      <ul class="perks">
+        <li><span>✔</span> Best model<br>for your task</li>
+        <li><span>⚡</span> Research when<br>needed</li>
+        <li><span>▮</span> Optimized for<br>quality &amp; speed</li>
+      </ul>
+      <button class="go" aria-label="Select">→</button>
+    </article>
+
+    <article class="panel choice" id="manualCard">
+      <div class="choice-head">
+        <div class="gem sq">⚟</div>
+        <div>
+          <h3>Choose My AI</h3>
+          <p>Select your preferred AI provider and model.</p>
+        </div>
+      </div>
+      <div class="providers" id="providers">
+        <button class="prov active" data-p="openai"><b>◎</b><span>OpenAI<small>ChatGPT API</small></span></button>
+        <button class="prov" data-p="anthropic"><b>A\</b><span>Anthropic<small>Claude API</small></span></button>
+        <button class="prov" data-p="google"><b>✦</b><span>Google<small>Gemini API</small></span></button>
+        <button class="prov" data-p="more"><b>▦</b><span>More<small>Providers</small></span></button>
+      </div>
+      <div class="row">
+        <select id="model" aria-label="Model"></select>
+        <div class="key"><i></i><span>API key connected<small>(your key)</small></span><a href="#" id="changeKey">Change</a></div>
+      </div>
+      <button class="go" aria-label="Select">→</button>
+    </article>
+  </section>
+
+  <section class="depth">
+    <p>How deeply should we work on your idea? <span class="info">i</span></p>
+    <div class="seg" id="depth">
+      <button data-d="quick"><b>⚡</b><span>Quick<small>Improve the wording</small></span></button>
+      <button data-d="balanced" class="active"><b>◎</b><span>Balanced<small>Clarify &amp; explore</small></span></button>
+      <button data-d="deep"><b>⌕</b><span>Deep Research<small>Research thoroughly</small></span></button>
+    </div>
+  </section>
+
+  <section class="templates">
+    <div class="tpl-head"><h2>Start with a template</h2><a href="#">View all →</a></div>
+    <div class="tpl-row" id="templates">
+      <button data-t="a SaaS analytics dashboard with charts, user management and billing"><b>▥</b><span>SaaS Dashboard<small>Analytics &amp; management</small></span><i>→</i></button>
+      <button data-t="an e-commerce website with product catalog, cart and online payments"><b>🛒</b><span>E-commerce Website<small>Online store &amp; payments</small></span><i>→</i></button>
+      <button data-t="an AI chatbot assistant with chat history and custom knowledge"><b>◉</b><span>AI Chatbot<small>Smart assistant</small></span><i>→</i></button>
+      <button data-t="an expense tracker app with categories, budgets and monthly reports"><b>▤</b><span>Expense Tracker<small>Track &amp; save money</small></span><i>→</i></button>
+      <button data-t="a portfolio website to showcase my work with a contact form"><b>▣</b><span>Portfolio Website<small>Showcase your work</small></span><i>→</i></button>
+      <button data-t="a booking platform for appointments and reservations with calendar"><b>▦</b><span>Booking Platform<small>Appointments &amp; reservations</small></span><i>→</i></button>
+    </div>
+  </section>
+</main>
+
+<div id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
