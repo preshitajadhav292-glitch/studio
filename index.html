@@ -1,114 +1,417 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Project Studio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Project Studio - Turn rough ideas into clear, effective AI prompts.">
+  <meta name="theme-color" content="#FFEA49">
+  <title>Project Studio — Let’s Build.</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23FFEA49' stroke='%23111111' stroke-width='12'/><text x='50' y='68' text-anchor='middle' font-size='52' font-weight='900' fill='%23111111'>P</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="topbar">
-  <a class="brand" href="#"><span class="logo">✦</span> Project Studio</a>
-  <nav id="nav">
-    <a href="#" class="active">Workspace</a>
-    <a href="#">My Projects</a>
-    <a href="#">History</a>
-  </nav>
-  <div class="user">
-    <button class="icon-btn" aria-label="Settings">⚙</button>
-    <span class="avatar">PS</span>
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Project Studio Home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">PROJECT STUDIO</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="nav" aria-label="Main Navigation">
+      <a href="#promptSection" class="active" aria-current="page">Workspace</a>
+      <a href="#aiSection">Models</a>
+      <a href="#depthSection">Depth</a>
+      <a href="#templatesSection">Templates</a>
+    </nav>
+
+    <div class="user-actions">
+      <span class="status-badge" title="Local demo mode">
+        <i class="status-dot" aria-hidden="true"></i>
+        LIVE / LOCAL
+      </span>
+      <button class="icon-btn" id="settingsBtn" aria-label="Open Settings" title="Settings">⚙</button>
+      <button class="icon-btn" id="helpBtn" aria-label="View Help" title="Help">?</button>
+      <span class="avatar" title="Preshita (Studio User)">PS</span>
+    </div>
+  </header>
+
+  <!-- Marquee strip -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>★ BUILD BETTER PROMPTS ★ SHIP FAST ★ NO FLUFF ★ AI CREATORS ★ PROJECT STUDIO ★ BUILD BETTER PROMPTS ★ SHIP FAST ★ NO FLUFF ★ AI CREATORS ★ PROJECT STUDIO ★</span>
+      <span>★ BUILD BETTER PROMPTS ★ SHIP FAST ★ NO FLUFF ★ AI CREATORS ★ PROJECT STUDIO ★ BUILD BETTER PROMPTS ★ SHIP FAST ★ NO FLUFF ★ AI CREATORS ★ PROJECT STUDIO ★</span>
+    </div>
   </div>
-</header>
 
-<main>
-  <section class="hero">
-    <p class="eyebrow">AI-POWERED APP BUILDER</p>
-    <h1>From a spark of an idea<br><em>to something real.</em></h1>
-    <p class="sub">Describe what you want to build. Let AI research, refine, and structure your idea into a powerful prompt ready for application generation.</p>
-    <div class="eyes" aria-hidden="true">
-  <div class="eye"><span class="pupil"></span></div>
-  <div class="eye"><span class="pupil"></span></div>
-</div>
-  </section>
+  <main id="mainContent">
 
-  <section class="panel prompt">
-    <h2 class="panel-title"><span class="spark">✦</span> What do you want to build?</h2>
-    <div class="textwrap">
-      <textarea id="idea" maxlength="2000" placeholder="Describe the application you want to build..."></textarea>
-      <div class="textbar">
-        <button class="icon-btn" aria-label="Attach file">📎</button>
-        <span id="count">0/2000</span>
-        <button id="improve" class="cta">Improve My Prompt →</button>
+    <!-- Hero -->
+    <section class="hero motion-in" aria-labelledby="heroTitle">
+      <div class="hero-deco" aria-hidden="true">
+        <span class="deco deco-square"></span>
+        <span class="deco deco-circle"></span>
+        <span class="deco deco-dot"></span>
+        <span class="deco deco-outline"></span>
+        <span class="deco deco-pink"></span>
       </div>
-    </div>
-  </section>
+      <div class="hero-layout">
+        <div class="hero-content">
+          <span class="play-badge" aria-hidden="true">★ BUILT FOR AI CREATORS</span>
+          <h1 id="heroTitle">LET’S BUILD.</h1>
+          <p class="sub">
+            Project Studio transforms rough ideas into structured, production-ready AI prompts.
+          </p>
+          <div class="hero-cta-row">
+            <a href="#promptSection" class="btn btn-pink">START WRITING →</a>
+            <a href="#templatesSection" class="btn btn-ghost">BROWSE TEMPLATES</a>
+          </div>
+        </div>
 
-  <section class="grid2">
-    <article class="panel choice recommended" id="autoCard" tabindex="0">
-      <span class="badge">RECOMMENDED</span>
-      <div class="choice-head">
-        <div class="gem">✦</div>
-        <div>
-          <h3>Let AI choose for me</h3>
-          <p>Our platform selects the best AI model and research workflow for your idea.</p>
+        <aside class="hero-card motion-in motion-delay" aria-hidden="true">
+          <div class="hero-card-head">
+            <span class="tag tag-mint">TODAY</span>
+            <span class="star-deco">★</span>
+          </div>
+          <ul class="hero-checklist">
+            <li class="done"><span>✓</span> Draft your idea</li>
+            <li class="done"><span>✓</span> Pick depth &amp; model</li>
+            <li class="active"><span>→</span> Improve the prompt</li>
+            <li><span>○</span> Ship to your AI</li>
+          </ul>
+          <div class="hero-sticker">100%<br>NO BS</div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Prompt Workspace -->
+    <section class="panel prompt" id="promptSection" aria-labelledby="promptTitle">
+      <div class="prompt-deco" aria-hidden="true">
+        <span class="deco deco-square deco-slow"></span>
+        <span class="deco deco-dot deco-alt"></span>
+      </div>
+      <div class="panel-head">
+        <p class="section-label"><span class="num-badge num-pink">02</span> WORKSPACE</p>
+        <h2 class="panel-title" id="promptTitle">
+          What do you want to build?
+        </h2>
+        <p class="panel-hint">Drop a rough idea below. We’ll sharpen it into a production-grade prompt.</p>
+      </div>
+
+      <div class="textwrap">
+        <label for="idea" class="field-label">YOUR IDEA</label>
+        <textarea
+          id="idea"
+          maxlength="2000"
+          placeholder="Describe the application you want to build..."
+          rows="5"
+        ></textarea>
+
+        <div id="attachmentBadge" class="attachment-pill" hidden>
+          <span class="attachment-icon" aria-hidden="true">📄</span>
+          <span id="attachmentName" class="attachment-text">file.txt</span>
+          <button id="removeAttachmentBtn" class="pill-remove-btn" aria-label="Remove attachment">&times;</button>
+        </div>
+
+        <div class="textbar">
+          <div class="textbar-left">
+            <button class="icon-btn" id="attachBtn" aria-label="Attach reference file" title="Attach reference file (text, pdf, json, image)">📎</button>
+            <input type="file" id="fileInput" accept=".txt,.md,.json,.pdf,.png,.jpg,.jpeg" hidden>
+            <button class="btn-reset" id="clearIdeaBtn" aria-label="Clear input text">CLEAR</button>
+          </div>
+
+          <div class="textbar-right">
+            <span id="count" aria-live="polite">0/2000</span>
+            <button id="improve" class="cta">
+              <span class="cta-spinner" aria-hidden="true" hidden></span>
+              <span class="cta-label">IMPROVE MY PROMPT →</span>
+            </button>
+          </div>
         </div>
       </div>
-      <ul class="perks">
-        <li><span>✔</span> Best model<br>for your task</li>
-        <li><span>⚡</span> Research when<br>needed</li>
-        <li><span>▮</span> Optimized for<br>quality &amp; speed</li>
-      </ul>
-      <button class="go" aria-label="Select">→</button>
-    </article>
+    </section>
 
-    <article class="panel choice" id="manualCard">
-      <div class="choice-head">
-        <div class="gem sq">⚟</div>
-        <div>
-          <h3>Choose My AI</h3>
-          <p>Select your preferred AI provider and model.</p>
+    <!-- Results -->
+    <section class="panel result-panel" id="resultPanel" hidden aria-labelledby="resultTitle">
+      <div class="result-header">
+        <div class="result-title-group">
+          <p class="section-label"><span class="num-badge num-mint">OUT</span> RESULT</p>
+          <h2 id="resultTitle">Generated Production Prompt</h2>
+          <span class="result-badge" id="resultBadge">Balanced Mode</span>
+        </div>
+        <div class="result-actions">
+          <button id="copyResultBtn" class="action-btn" title="Copy to clipboard">
+            <span class="icon" aria-hidden="true">📋</span> Copy
+          </button>
+          <button id="downloadResultBtn" class="action-btn" title="Download Markdown">
+            <span class="icon" aria-hidden="true">↓</span> Download .md
+          </button>
+          <button id="useResultBtn" class="action-btn" title="Load into input box">
+            <span class="icon" aria-hidden="true">✎</span> Use as Input
+          </button>
+          <button id="dismissResultBtn" class="icon-btn close-btn" aria-label="Dismiss result">&times;</button>
         </div>
       </div>
-      <div class="providers" id="providers">
-        <button class="prov active" data-p="openai"><b>◎</b><span>OpenAI<small>ChatGPT API</small></span></button>
-        <button class="prov" data-p="anthropic"><b>A\</b><span>Anthropic<small>Claude API</small></span></button>
-        <button class="prov" data-p="google"><b>✦</b><span>Google<small>Gemini API</small></span></button>
-        <button class="prov" data-p="more"><b>▦</b><span>More<small>Providers</small></span></button>
+      <div class="result-meta">
+        <span id="resultStats">0 words • 0 characters</span>
+        <span id="resultModel">Model: Auto</span>
       </div>
-      <div class="row">
-        <select id="model" aria-label="Model"></select>
-        <div class="key"><i></i><span>API key connected<small>(your key)</small></span><a href="#" id="changeKey">Change</a></div>
+      <pre class="result-body"><code id="resultContent"></code></pre>
+    </section>
+
+    <!-- AI Model Selection -->
+    <section class="ai-section scroll-reveal" id="aiSection" aria-label="AI Selection Mode">
+      <div class="section-intro">
+        <p class="section-label"><span class="num-badge num-blue">03</span> ENGINE</p>
+        <h2 class="section-title">Pick how Project Studio thinks</h2>
+        <p class="section-sub">Auto for speed — or lock a provider and model yourself.</p>
       </div>
-      <button class="go" aria-label="Select">→</button>
-    </article>
-  </section>
 
-  <section class="depth">
-    <p>How deeply should we work on your idea? <span class="info">i</span></p>
-    <div class="seg" id="depth">
-      <button data-d="quick"><b>⚡</b><span>Quick<small>Improve the wording</small></span></button>
-      <button data-d="balanced" class="active"><b>◎</b><span>Balanced<small>Clarify &amp; explore</small></span></button>
-      <button data-d="deep"><b>⌕</b><span>Deep Research<small>Research thoroughly</small></span></button>
+      <div class="grid2" role="radiogroup" aria-label="AI Selection Mode">
+        <article
+          class="panel choice recommended selected"
+          id="autoCard"
+          tabindex="0"
+          role="radio"
+          aria-checked="true"
+          aria-label="Let AI choose for me (Recommended)"
+        >
+          <span class="badge">RECOMMENDED</span>
+          <div class="choice-head">
+            <div class="gem" aria-hidden="true">★</div>
+            <div>
+              <h3>Let AI choose for me</h3>
+              <p>We pick the best model and research workflow for your idea.</p>
+            </div>
+          </div>
+          <ul class="perks">
+            <li><span class="perk-icon">✔</span> Best model<br>for your task</li>
+            <li><span class="perk-icon">⚡</span> Research when<br>needed</li>
+            <li><span class="perk-icon">▮</span> Optimized for<br>quality &amp; speed</li>
+          </ul>
+          <div class="go" aria-hidden="true">→</div>
+        </article>
+
+        <article
+          class="panel choice"
+          id="manualCard"
+          tabindex="0"
+          role="radio"
+          aria-checked="false"
+          aria-label="Choose My AI"
+        >
+          <div class="choice-head">
+            <div class="gem sq" aria-hidden="true">◈</div>
+            <div>
+              <h3>Choose My AI</h3>
+              <p>Select your preferred AI provider, model version, and API key.</p>
+            </div>
+          </div>
+
+          <div class="providers" id="providers" role="radiogroup" aria-label="AI Providers">
+            <button class="prov active" data-p="openai" role="radio" aria-checked="true">
+              <b>◎</b>
+              <span>OpenAI<small>ChatGPT API</small></span>
+            </button>
+            <button class="prov" data-p="anthropic" role="radio" aria-checked="false">
+              <b>A\</b>
+              <span>Anthropic<small>Claude API</small></span>
+            </button>
+            <button class="prov" data-p="google" role="radio" aria-checked="false">
+              <b>✦</b>
+              <span>Google<small>Gemini API</small></span>
+            </button>
+            <button class="prov" data-p="deepseek" role="radio" aria-checked="false">
+              <b>▦</b>
+              <span>DeepSeek<small>R1 &amp; V3</small></span>
+            </button>
+          </div>
+
+          <div class="row">
+            <label for="model" class="sr-only">Select AI Model</label>
+            <select id="model" aria-label="Select AI Model"></select>
+
+            <div class="key" id="keyIndicator">
+              <i class="key-status-dot" aria-hidden="true"></i>
+              <span class="key-status-text">
+                <span id="keyLabel">API key connected</span>
+                <small>(stored locally)</small>
+              </span>
+              <button class="link-btn" id="changeKey" type="button">Configure</button>
+            </div>
+          </div>
+
+          <div class="go" aria-hidden="true">→</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Depth Selector -->
+    <section class="depth scroll-reveal" id="depthSection" aria-labelledby="depthHeading">
+      <div class="depth-header">
+        <p class="section-label"><span class="num-badge num-yellow">04</span> DEPTH</p>
+        <p id="depthHeading" class="section-title">
+          How deeply should we work on your idea?
+          <button class="info-btn" id="depthInfoBtn" aria-label="Information about research depth" title="Click to view depth details">i</button>
+        </p>
+      </div>
+      <div class="seg" id="depth" role="radiogroup" aria-label="Work depth">
+        <button data-d="quick" role="radio" aria-checked="false">
+          <span class="depth-tag">01</span>
+          <b>⚡</b>
+          <span>QUICK<small>Improve the essentials.</small></span>
+        </button>
+        <button data-d="balanced" class="active" role="radio" aria-checked="true">
+          <span class="depth-tag">02</span>
+          <b>◎</b>
+          <span>BALANCED<small>Add clarity and useful detail.</small></span>
+        </button>
+        <button data-d="deep" role="radio" aria-checked="false">
+          <span class="depth-tag">03</span>
+          <b>⌕</b>
+          <span>DEEP<small>Comprehensive, structured prompt.</small></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Templates -->
+    <section class="templates scroll-reveal" id="templatesSection" aria-labelledby="templatesHeading">
+      <div class="tpl-head">
+        <div>
+          <p class="section-label"><span class="num-badge">05</span> STARTERS</p>
+          <h2 id="templatesHeading" class="section-title">Start with a template</h2>
+        </div>
+        <span class="tpl-sub">Click any idea to load into the prompt box ★</span>
+      </div>
+      <div class="tpl-row" id="templates">
+        <button class="tpl-card tpl-yellow" data-t="a SaaS analytics dashboard with real-time charts, user access management, multi-tenant billing, and exportable PDF reports">
+          <span class="tpl-cat">ANALYTICS</span>
+          <b>▥</b>
+          <span class="tpl-title">SaaS Dashboard</span>
+          <small>Analytics &amp; management</small>
+          <i>→</i>
+        </button>
+        <button class="tpl-card tpl-pink" data-t="an e-commerce platform with product catalog, inventory tracking, shopping cart, Stripe payments, and customer order history">
+          <span class="tpl-cat">COMMERCE</span>
+          <b>▣</b>
+          <span class="tpl-title">E-commerce Store</span>
+          <small>Online store &amp; payments</small>
+          <i>→</i>
+        </button>
+        <button class="tpl-card tpl-blue" data-t="an AI chatbot assistant with custom document knowledge base, streaming responses, chat history, and semantic vector search">
+          <span class="tpl-cat">AI TOOLS</span>
+          <b>◉</b>
+          <span class="tpl-title">AI Chatbot</span>
+          <small>Smart assistant &amp; docs</small>
+          <i>→</i>
+        </button>
+        <button class="tpl-card tpl-mint" data-t="an expense tracker app with category budgeting, receipt scanning via OCR, recurring subscription alerts, and monthly breakdown charts">
+          <span class="tpl-cat">FINANCE</span>
+          <b>▤</b>
+          <span class="tpl-title">Expense Tracker</span>
+          <small>Track &amp; save money</small>
+          <i>→</i>
+        </button>
+        <button class="tpl-card tpl-cream" data-t="a portfolio website with interactive 3D WebGL hero, case study showcases, markdown blog, and animated contact form">
+          <span class="tpl-cat">CREATIVE</span>
+          <b>✦</b>
+          <span class="tpl-title">Portfolio Website</span>
+          <small>Showcase creative work</small>
+          <i>→</i>
+        </button>
+        <button class="tpl-card tpl-black" data-t="a booking and appointment platform with calendar sync, timezone detection, automated email notifications, and payment deposit">
+          <span class="tpl-cat">OPS</span>
+          <b>▦</b>
+          <span class="tpl-title">Booking Platform</span>
+          <small>Appointments &amp; calendar</small>
+          <i>→</i>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>PROJECT STUDIO</span>
+    <span class="footer-star" aria-hidden="true">★</span>
+    <span>NEO-BRUTAL PROMPT LAB</span>
+  </footer>
+
+  <!-- Settings Modal -->
+  <dialog id="settingsModal" class="modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Studio Settings &amp; API Keys</h3>
+        <button class="icon-btn close-modal" id="closeSettingsModal" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-description">
+          API keys are stored safely in your browser's <code>localStorage</code> and never sent to any intermediate server.
+        </p>
+
+        <div class="form-group">
+          <label for="keyOpenAI">OpenAI API Key</label>
+          <input type="password" id="keyOpenAI" placeholder="sk-..." autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="keyAnthropic">Anthropic API Key</label>
+          <input type="password" id="keyAnthropic" placeholder="sk-ant-..." autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="keyGoogle">Google Gemini API Key</label>
+          <input type="password" id="keyGoogle" placeholder="AIzaSy..." autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="keyDeepSeek">DeepSeek API Key</label>
+          <input type="password" id="keyDeepSeek" placeholder="sk-..." autocomplete="off">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="clearKeysBtn" class="btn-secondary">Clear Keys</button>
+        <button id="saveSettingsBtn" class="cta">Save Settings</button>
+      </div>
     </div>
-  </section>
+  </dialog>
 
-  <section class="templates">
-    <div class="tpl-head"><h2>Start with a template</h2><a href="#">View all →</a></div>
-    <div class="tpl-row" id="templates">
-      <button data-t="a SaaS analytics dashboard with charts, user management and billing"><b>▥</b><span>SaaS Dashboard<small>Analytics &amp; management</small></span><i>→</i></button>
-      <button data-t="an e-commerce website with product catalog, cart and online payments"><b>🛒</b><span>E-commerce Website<small>Online store &amp; payments</small></span><i>→</i></button>
-      <button data-t="an AI chatbot assistant with chat history and custom knowledge"><b>◉</b><span>AI Chatbot<small>Smart assistant</small></span><i>→</i></button>
-      <button data-t="an expense tracker app with categories, budgets and monthly reports"><b>▤</b><span>Expense Tracker<small>Track &amp; save money</small></span><i>→</i></button>
-      <button data-t="a portfolio website to showcase my work with a contact form"><b>▣</b><span>Portfolio Website<small>Showcase your work</small></span><i>→</i></button>
-      <button data-t="a booking platform for appointments and reservations with calendar"><b>▦</b><span>Booking Platform<small>Appointments &amp; reservations</small></span><i>→</i></button>
+  <!-- Depth Info Modal -->
+  <dialog id="depthModal" class="modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Prompt Depth Levels</h3>
+        <button class="icon-btn close-modal" id="closeDepthModal" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="modal-body depth-guide">
+        <div class="depth-card depth-card-yellow">
+          <h4>⚡ QUICK</h4>
+          <p>Ideal for rapid brainstorming. Refines your wording, fixes ambiguity, and establishes direct, concise requirements.</p>
+        </div>
+        <div class="depth-card depth-card-pink">
+          <h4>◎ BALANCED (Recommended)</h4>
+          <p>Creates a full architectural outline. Details core user flows, technical stack recommendations, page layouts, and state management.</p>
+        </div>
+        <div class="depth-card depth-card-blue">
+          <h4>⌕ DEEP</h4>
+          <p>Comprehensive production blueprint. Includes database schemas, REST/GraphQL API specifications, security &amp; auth patterns, edge cases, and phased implementation roadmaps.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="closeDepthBtn" class="cta">Got it</button>
+      </div>
     </div>
-  </section>
-</main>
+  </dialog>
 
-<div id="toast" role="status"></div>
-<script src="script.js"></script>
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
